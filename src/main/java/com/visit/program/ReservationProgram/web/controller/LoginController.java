@@ -1,0 +1,74 @@
+package com.visit.program.ReservationProgram.web.controller;
+
+import com.visit.program.ReservationProgram.domain.dao.Employee;
+import com.visit.program.ReservationProgram.domain.dao.Reservation;
+import com.visit.program.ReservationProgram.domain.dao.session.SessionConst;
+import com.visit.program.ReservationProgram.domain.dto.Login;
+import com.visit.program.ReservationProgram.domain.service.EmployeeService;
+import com.visit.program.ReservationProgram.domain.service.LoginService;
+import com.visit.program.ReservationProgram.domain.service.ReservationService;
+import com.visit.program.ReservationProgram.web.controller.path.AbstractPath;
+import com.visit.program.ReservationProgram.web.controller.path.PathChange;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.UUID;
+
+@Slf4j
+@Controller
+@RequiredArgsConstructor
+@RequestMapping("/reservation")
+public class LoginController {
+    private final LoginService loginService;
+    private final ReservationService reservationService;
+
+    @GetMapping("/login/{reservationId}")
+    public String login(@SessionAttribute(SessionConst.ACCESS_METHOD)String method,@PathVariable("reservationId")Long reservationId,@ModelAttribute("login")Login login){
+       String url = "view/Login";
+        AbstractPath path = new AbstractPath() {
+            @Override
+            protected String call() {
+                return "redirect:/m/reservation/login/{reservationId}";
+            }
+        };
+       return path.change(method,url);
+    }
+
+    @PostMapping("/login/{reservationId}")
+    public String login2(@PathVariable("reservationId")Long reservationId,@Valid @ModelAttribute("login")Login login,BindingResult bindingResult, HttpSession session, Model model){
+        Reservation res = reservationService.findOne(reservationId);
+        Long employeeId = findEmployeeId(res.getVisitor_id(),login,bindingResult);
+        if(bindingResult.hasErrors()){
+            model.addAttribute("errorMsg","아이디 or 비밀번호가 틀렸습니다.");
+            return "view/Login";
+        }
+            session.setAttribute(SessionConst.LOGIN_SUCCESS,UUID.randomUUID().toString());
+        return "redirect:/reservation/info/update/"+reservationId;
+    }
+
+
+
+
+    private Long findEmployeeId(Long id, Login login, BindingResult bindingResult){
+        Long employeeId = loginService.loginMember(login,id);
+
+        if(employeeId==null){
+            bindingResult.reject("globalError","아이디 / 비밀번호가 틀렸습니다.");
+        }
+        return employeeId;
+    }
+
+
+}
