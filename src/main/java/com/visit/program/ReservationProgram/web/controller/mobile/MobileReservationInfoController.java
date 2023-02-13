@@ -109,7 +109,6 @@ public class MobileReservationInfoController {
             cnt++;
             builder.append("이름 ");
         }
-
         if (!StringUtils.hasText(visitor.getName())) {
             cnt++;
             builder.append("방문자 ");

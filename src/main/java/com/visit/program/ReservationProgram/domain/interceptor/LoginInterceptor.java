@@ -20,8 +20,6 @@ import java.util.Arrays;
 public class LoginInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        log.info("Login Interceptor!!!");
-
         HttpSession session = request.getSession();
         String requestURI = request.getRequestURI();
         int i = requestURI.lastIndexOf("/");
