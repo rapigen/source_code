@@ -1,6 +1,5 @@
 package com.visit.program.ReservationProgram.web.controller.path;
 
-import com.visit.program.ReservationProgram.domain.dao.session.SessionConst;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
 import static com.visit.program.ReservationProgram.domain.dao.session.SessionConst.ACCESS_METHOD;

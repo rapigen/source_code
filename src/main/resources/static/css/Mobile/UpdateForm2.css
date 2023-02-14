@@ -1,9 +1,10 @@
-label{
-    margin-top:-4%;
-    margin-left:-2%;
-    color:#9b9b9b;
-}
 
+label{
+  padding-left:2.5%;
+  padding-top:3%;
+  color:#828282;
+
+}
 h8.text-center.font-weight-light.my-4{
     margin-left:20%;
 }
