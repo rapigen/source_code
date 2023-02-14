@@ -8,10 +8,10 @@ label input{
 }
 label{
       position: absolute;
-    margin-top:-4pt;
+    padding-left:2.0%;
+    padding-top:-1%;
     font-size:20px;
 }
-
 input.form-control{
     margin-left: 18%;
     width:80%;
@@ -118,7 +118,7 @@ margin-left:26px;
 }
 #phoneNumberLabel{
   margin-top:0.5%;
-margin-left:43px;
+  margin-left:1%;
 }
 #companyLabel{
 margin-left:45px;
