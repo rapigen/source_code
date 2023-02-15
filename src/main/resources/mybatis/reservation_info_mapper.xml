@@ -15,6 +15,36 @@
 
 
 
+    <select id = "findMyVisitors" resultType="com.visit.program.ReservationProgram.domain.dao.Reservation">
+        select r.id,if(CHAR_LENGTH(v.purpose) <![CDATA[ <= ]]>10,v.purpose,concat(left(v.purpose,10),' ...')) as purpose, v.name,v.employee_name,v.visit_date1,v.visit_date2,v.phone_number,v.withPerson, if(CHAR_LENGTH(v.company) <![CDATA[ <= ]]>10,v.company,concat(left(v.company,10),' ...')) as company,v.is_checked from Reservation_info r inner join visitor v on r.visitor_id = v.id
+
+        <where>
+            <if test="employee_id!=null and employee_id!=''">
+                and r.employee_id = #{employee_id}
+            </if>
+            <if test="name!=null and name!=''">
+                and v.name like concat('%',#{name},'%')
+            </if>
+            <if test="date1!=null and date1!='' and date2!=null and date2!=''">
+                and date(v.visit_date1) between #{date1} and #{date2}
+            </if>
+            <if test="date1!=null and date1!=''">
+                and date(v.visit_date1) >= #{date1}
+            </if>
+
+            <if test="date2!=null and date2!=''">
+                and date(v.visit_date2) <![CDATA[ <= ]]> #{date2}
+            </if>
+            <if test="is_checked!=null and is_checked!=''">
+                and v.is_checked like #{is_checked}
+            </if>
+
+        </where>
+        order by v.visit_date1 asc ,r.id asc
+    </select>
+
+
+
     <select id="findOne" resultType="com.visit.program.ReservationProgram.domain.dao.Reservation">
         select r.id,r.visitor_id, v.checked_date,v.name,v.employee_name,v.visit_date1,v.visit_date2,v.phone_number,v.withPerson,v.company,v.is_checked from Reservation_info r inner join visitor v on r.visitor_id = v.id
         where r.id = #{id}

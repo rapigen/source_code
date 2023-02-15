@@ -2,6 +2,7 @@ package com.visit.program.ReservationProgram.web.controller.mobile;
 
 import com.visit.program.ReservationProgram.domain.dao.*;
 import com.visit.program.ReservationProgram.domain.dao.session.SessionConst;
+import com.visit.program.ReservationProgram.domain.dto.MyReservationDTO;
 import com.visit.program.ReservationProgram.domain.dto.ReservationDTO;
 import com.visit.program.ReservationProgram.domain.ex.AlreadyCheckedEx;
 import com.visit.program.ReservationProgram.domain.ex.ErrorMessage;
@@ -39,8 +40,22 @@ public class MobileReservationInfoController {
     private final ReservationService reservationService;
     private final EmployeeService employeeService;
     private final VisitorService visitorService;
+    @ModelAttribute(name="renewDate")
+    public String renewDate(){
+        return  LocalDateTime.now().format(DateTimeFormatter.ofPattern("yy/MM/dd hh:mm:ss"));
+    }
 
-
+    @GetMapping("/{employee_id}/all")
+    public String viewMyVisitors(@PathVariable("employee_id") Long employee_id, @ModelAttribute("reservationDTO") MyReservationDTO reservationDTO, Model model
+            ){
+        Employee emp = employeeService.findById(employee_id);
+        String loginId = emp.getLoginId();
+        reservationDTO.setEmployee_id(employee_id);
+        List<Reservation> reservations = reservationService.findMyVisitors(reservationDTO);
+        model.addAttribute("reservations",reservations);
+        model.addAttribute("loginId",loginId);
+        return "mobile/view/viewMyVisitor";
+    }
     @GetMapping("/save")
     public String saveInfo(@ModelAttribute("visitor")SaveVisitor visitor,Model model,HttpSession session){
         String path = "mobile/view/SaveForm";

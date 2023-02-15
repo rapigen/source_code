@@ -8,11 +8,21 @@
   font-size:50%;
   text-align:center;
 }
+input#name{
+    width:30%;
+  height:20px;
+  text-align:center;
+
+}
+
+#visitO,#visitX{
+font-size:20px;
+}
 #DTO2Text{
   font-size:80%;
 }
 #sortTab{
-  margin-left:2%;
+  margin-left:3%;
   padding-top:2%;
   padding-bottom:2%;;
 }

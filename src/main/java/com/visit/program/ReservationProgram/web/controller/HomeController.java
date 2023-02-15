@@ -26,6 +26,10 @@ public class HomeController {
     @ResponseBody
     public String home(){return "해당 페이지에 접근할 수 없습니다. 다시 접속해주세요";}
 
+    @ModelAttribute(name="renewDate")
+    public String renewDate(){
+        return  LocalDateTime.now().format(DateTimeFormatter.ofPattern("yy/MM/dd hh:mm:ss"));
+    }
     @GetMapping("/reservation/info/all/rapigen_employee")
     public String viewEmployees(HttpSession session) {
         String uri = "redirect:/reservation/info/save";
@@ -51,8 +55,8 @@ public class HomeController {
 
     @GetMapping("/reservation")
     public String redirectReservation(RedirectAttributes redirectAttributes){
-        String renewDate = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yy/MM/dd hh:mm:ss"));
-        redirectAttributes.addAttribute("renewDate",renewDate);
+//        String renewDate = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yy/MM/dd hh:mm:ss"));
+//        redirectAttributes.addAttribute("renewDate",renewDate);
         return "redirect:/reservation/info/all";
     }
 
@@ -61,7 +65,7 @@ public class HomeController {
     public String viewAll(Model model,@ModelAttribute("reservationDTO")ReservationDTO reservationDTO,HttpSession session) {
         List<Reservation> reservations = null;
         String url = "view/All1";
-        model.addAttribute("renewDate",LocalDateTime.now().format(DateTimeFormatter.ofPattern("yy/MM/dd hh:mm:ss")));
+//        model.addAttribute("renewDate",LocalDateTime.now().format(DateTimeFormatter.ofPattern("yy/MM/dd hh:mm:ss")));
         session.removeAttribute(SessionConst.LOGIN_SUCCESS);
         if(session.getAttribute(SessionConst.ACCESS_ID).toString().contains("security")){
             url = "view/All2";

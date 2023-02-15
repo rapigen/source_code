@@ -28,14 +28,18 @@ import java.util.UUID;
 @RequestMapping("/m")
 public class MobileHomeController {
     private final ReservationService reservationService;
+    @ModelAttribute(name="renewDate")
+    public String renewDate(){
+        return  LocalDateTime.now().format(DateTimeFormatter.ofPattern("yy/MM/dd hh:mm:ss"));
+    }
     @GetMapping
     @ResponseBody
     public String home(){return "해당 페이지에 접근할 수 없습니다. 다시 접속해주세요";}
 
     @GetMapping("/reservation")
     public String redirectReservation(RedirectAttributes redirectAttributes){
-        String renewDate = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yy/MM/dd hh:mm:ss"));
-        redirectAttributes.addAttribute("renewDate",renewDate);
+//        String renewDate = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yy/MM/dd hh:mm:ss"));
+//        redirectAttributes.addAttribute("renewDate",renewDate);
         return "redirect:/m/reservation/info/all";
     }
 
@@ -43,7 +47,7 @@ public class MobileHomeController {
     @GetMapping("/reservation/info/all")
     public String viewAll(Model model,@ModelAttribute("reservationDTO")ReservationDTO reservationDTO,HttpSession session) {
         String url = "mobile/view/All1";
-        model.addAttribute("renewDate",LocalDateTime.now().format(DateTimeFormatter.ofPattern("yy/MM/dd hh:mm:ss")));
+//        model.addAttribute("renewDate",LocalDateTime.now().format(DateTimeFormatter.ofPattern("yy/MM/dd hh:mm:ss")));
         session.removeAttribute(SessionConst.LOGIN_SUCCESS);
         if(session.getAttribute(SessionConst.ACCESS_ID).toString().contains("security")){
             url = "mobile/view/All2";

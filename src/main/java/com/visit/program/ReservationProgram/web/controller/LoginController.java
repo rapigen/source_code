@@ -24,6 +24,8 @@ import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.UUID;
 
 @Slf4j
@@ -33,7 +35,10 @@ import java.util.UUID;
 public class LoginController {
     private final LoginService loginService;
     private final ReservationService reservationService;
-
+    @ModelAttribute(name="renewDate")
+    public String renewDate(){
+        return  LocalDateTime.now().format(DateTimeFormatter.ofPattern("yy/MM/dd hh:mm:ss"));
+    }
     @GetMapping("/login/{reservationId}")
     public String login(@SessionAttribute(SessionConst.ACCESS_METHOD)String method,@PathVariable("reservationId")Long reservationId,@ModelAttribute("login")Login login){
        String url = "view/Login";
@@ -50,9 +55,13 @@ public class LoginController {
     public String login2(@PathVariable("reservationId")Long reservationId,@Valid @ModelAttribute("login")Login login,BindingResult bindingResult, HttpSession session, Model model){
         Reservation res = reservationService.findOne(reservationId);
         Long employeeId = findEmployeeId(res.getVisitor_id(),login,bindingResult);
+
         if(bindingResult.hasErrors()){
             model.addAttribute("errorMsg","아이디 or 비밀번호가 틀렸습니다.");
             return "view/Login";
+        }
+        if(session.getAttribute(SessionConst.EMPLOYEE_ID)==null){
+            session.setAttribute(SessionConst.EMPLOYEE_ID,res.getEmployee_id());
         }
             session.setAttribute(SessionConst.LOGIN_SUCCESS,UUID.randomUUID().toString());
         return "redirect:/reservation/info/update/"+reservationId;

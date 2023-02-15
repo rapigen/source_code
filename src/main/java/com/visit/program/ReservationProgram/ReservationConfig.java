@@ -25,14 +25,11 @@ public class ReservationConfig implements WebMvcConfigurer{
 
     @Bean
     public ServletContextInitializer clearJsession(){
-        return new ServletContextInitializer() {
-            @Override
-            public void onStartup(ServletContext servletContext) throws ServletException {
-                servletContext.setSessionTrackingModes(Collections.singleton(SessionTrackingMode.COOKIE));
+        return servletContext -> {
+            servletContext.setSessionTrackingModes(Collections.singleton(SessionTrackingMode.COOKIE));
 
-                SessionCookieConfig sessionCookieConfig = servletContext.getSessionCookieConfig();
-                sessionCookieConfig.setHttpOnly(true);
-            }
+            SessionCookieConfig sessionCookieConfig = servletContext.getSessionCookieConfig();
+            sessionCookieConfig.setHttpOnly(true);
         };
     }
 

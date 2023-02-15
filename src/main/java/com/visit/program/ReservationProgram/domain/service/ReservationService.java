@@ -3,6 +3,7 @@ package com.visit.program.ReservationProgram.domain.service;
 import com.visit.program.ReservationProgram.domain.dao.Reservation;
 import com.visit.program.ReservationProgram.domain.dao.ReservationInfo;
 import com.visit.program.ReservationProgram.domain.dao.SaveReservationInfo;
+import com.visit.program.ReservationProgram.domain.dto.MyReservationDTO;
 import com.visit.program.ReservationProgram.domain.dto.ReservationDTO;
 import com.visit.program.ReservationProgram.domain.repository.ReservationRepository;
 import lombok.RequiredArgsConstructor;
@@ -32,7 +33,9 @@ public class ReservationService {
 //        reservationDTO.setDate2( today.plusDays(7).format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
 //        return reservationRepository.findAllFromTodayTo7DaysReservations(reservationDTO);
 //    }
-
+    public List<Reservation> findMyVisitors(MyReservationDTO reservationDTO){
+        return reservationRepository.findMyVisitors(reservationDTO);
+    }
     @Transactional
     public void updateCheckedInfo(Long id){
         reservationRepository.updateCheckedInfo(true,id);

@@ -3,6 +3,7 @@ package com.visit.program.ReservationProgram.domain.repository;
 import com.visit.program.ReservationProgram.domain.dao.Reservation;
 import com.visit.program.ReservationProgram.domain.dao.ReservationInfo;
 import com.visit.program.ReservationProgram.domain.dao.SaveReservationInfo;
+import com.visit.program.ReservationProgram.domain.dto.MyReservationDTO;
 import com.visit.program.ReservationProgram.domain.dto.ReservationDTO;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -25,6 +26,9 @@ public interface ReservationRepository {
 
     List<Reservation> findAllDTO(ReservationDTO reservationDTO); //아이디로 방문내역 조회 (직원용)
     List<Reservation> findAllDTO2(ReservationDTO reservationDTO); //아이디로 방문내역 조회 (경비실용)
+
+    List<Reservation> findMyVisitors(MyReservationDTO reservationDTO);
+
 
 
 }
