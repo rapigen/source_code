@@ -3,7 +3,9 @@ package com.visit.program.ReservationProgram.domain.dao;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
+/**
+ * 예약 정보 관련 클래스 (방문자 전체 조회시 해당 클래스 사용)
+ * */
 @Getter
 @Setter
 @NoArgsConstructor

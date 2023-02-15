@@ -4,7 +4,9 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
+/**
+ *  reservation_info 매핑 클래스
+ * */
 @Getter
 @Setter
 @NoArgsConstructor

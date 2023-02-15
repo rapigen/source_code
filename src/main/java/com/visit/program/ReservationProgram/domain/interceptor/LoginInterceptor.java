@@ -1,5 +1,4 @@
 package com.visit.program.ReservationProgram.domain.interceptor;
-
 import com.visit.program.ReservationProgram.domain.dao.session.SessionConst;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.servlet.HandlerInterceptor;
@@ -15,7 +14,10 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.Arrays;
-
+/**
+ * 로그인 인터셉터
+ * 로그인 성공하면 로그인 관련 세션 (key : SessionConst.LOGIN_SUCCESS) 생성 -> 이 세션이 있어야 게시글의 수정, 삭제 가능하도록 설계함
+ * */
 @Slf4j
 public class LoginInterceptor implements HandlerInterceptor {
     @Override
@@ -25,7 +27,7 @@ public class LoginInterceptor implements HandlerInterceptor {
         int i = requestURI.lastIndexOf("/");
         requestURI = requestURI.substring(i+1);
         if(session.getAttribute(SessionConst.LOGIN_SUCCESS)==null){
-            response.sendRedirect("/reservation/login/"+requestURI);
+            response.sendRedirect("/reservation/login/"+requestURI);//로그인 성공을 하지 못하면 로그인 페이지로 다시 돌아감
             return false;
         }
             return true;

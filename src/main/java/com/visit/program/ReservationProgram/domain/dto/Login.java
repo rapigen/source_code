@@ -3,7 +3,9 @@ package com.visit.program.ReservationProgram.domain.dto;
 import lombok.*;
 
 import javax.validation.constraints.NotEmpty;
-
+/**
+ * 로그인 클래스
+ * */
 @Getter
 @Setter
 @NoArgsConstructor

@@ -11,7 +11,9 @@ import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
-
+/**
+ * 방문객 정보 수정을 위한 클래스
+ * */
 @Getter
 @Setter
 @NoArgsConstructor
@@ -58,7 +60,7 @@ public class UpdateVisitor {
         this.visit_date1 = visit_date1;
         this.visit_date2 = visit_date2;
         this.write_date = write_date;
-        this.revised_write_date = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yy/MM/dd HH:mm"));
+        this.revised_write_date = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yy/MM/dd HH:mm"));    //객체 생성시 현재 시각 셋팅
         this.withPerson = withPerson;
         this.count = count;
         this.is_checked = is_checked;

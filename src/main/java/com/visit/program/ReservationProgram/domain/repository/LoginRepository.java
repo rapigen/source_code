@@ -7,7 +7,10 @@ import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-
+/**
+ * 로그인 조회 관련 MAPPER 클래스. (경로 : mybatis/login_mapper.xml)
+ * 함수명 같게 하면 클래스와 쿼리문이 매핑됨.
+ * */
 @Mapper
 @Repository
 public interface LoginRepository {

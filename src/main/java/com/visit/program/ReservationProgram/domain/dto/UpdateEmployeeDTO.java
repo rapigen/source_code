@@ -7,7 +7,9 @@ import lombok.Setter;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
-
+/**
+ * 직원정보 수정
+ * */
 @Getter
 @Setter
 @AllArgsConstructor

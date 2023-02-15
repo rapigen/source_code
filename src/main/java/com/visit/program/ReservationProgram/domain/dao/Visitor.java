@@ -4,7 +4,10 @@ package com.visit.program.ReservationProgram.domain.dao;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
+/**
+ * visitor 테이블 매핑 클래스
+ *
+ * */
 @Getter
 @Setter
 @NoArgsConstructor

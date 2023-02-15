@@ -1,5 +1,7 @@
 package com.visit.program.ReservationProgram.domain.ex;
-
+/**
+ * 5회 이상 수정 불가이므로 이를 초과하면 예외 발생
+ * */
 public class ReviseCountExcess extends RuntimeException{
     public ReviseCountExcess() {
         super();

@@ -15,7 +15,9 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
+/**
+ * visitor 테이블을 저장하기 위한 클래스
+ * */
 @Getter
 @Setter
 @NoArgsConstructor
