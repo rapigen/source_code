@@ -25,19 +25,17 @@
                     <div class="row justify-content-center">
                         <div class="col-lg-7">
                             <div class="card shadow-lg border-0 rounded-lg mt-5">
-                                <div class="card-header"><h3 class="text-center font-weight-light my-4">
-                                    <img th:src="@{/images/rapigen_logo.png}" width="200"/>
-                                    <span>
-                                       방문 예약 (직원용)
-                                    </span>
-
-                                </h3>
+                                <div class="card-header">
+                                    <h8 class="text-center font-weight-light my-4">
+                                        <img th:src="@{/images/rapigen_logo.png}" id="logo" width="30%"/>          방문 내역(모바일)
+                                    </h8>
+                                </div>
 
                                 </div>
                                 <div id="AllContents">
-                                <span id="renewDateArea" title="새로고침은 F5">
+                                <div id="renewDateArea" title="새로고침은 F5">
                                     <span th:text="|조회시각 : ${renewDate} |"></span>
-                                </span>
+                                </div>
 
                                     <div id="sortTab">
                                         <div>
@@ -94,7 +92,7 @@
                                                                     <button class="btn btn-primary btn-block" id="visitO">방문 O</button>
                                                                  </span>
                                                                 <span th:if="${reservation.is_checked==false}">
-                                                                    <button class="btn btn-primary btn-block" id="visitX" style="font-size:20px; background-color: #a9a9a9; border:none;">방문 X</button>
+                                                                    <button class="btn-primary" id="visitX" style="font-size:10px; background-color: #a9a9a9; border:none; border-radius:3px">방문 X</button>
                                                                 </span>
                                                             </td>
                                                             <td><a th:href="@{/m/reservation/info/{id} (id=${reservation.id})}" role="button" class = "detailView">보기</a></td>
@@ -112,22 +110,19 @@
                                                 <a th:href="@{/reservation/info/all}"> <button class="btn btn-primary btn-block"> 목록으로 </button></a>
                                             </div>
 
-
                                         </div>
                                     </div>
-                                </div>
 
                                 <div class="card-footer text-center py-3">
                                     <span class="small"><a th:href="@{/reservation/info/all}">HOME</a></span>
                                 </div>
-
-                            </div>
                         </div>
-                    </div>
-                </div>
-        </main>
-    </div>
+                        </div>
 
+
+            </div>
+    </main>
+    </div>
     <div id="layoutAuthentication_footer">
         <footer class="py-4 bg-light mt-auto">
             <div class="container-fluid px-4">

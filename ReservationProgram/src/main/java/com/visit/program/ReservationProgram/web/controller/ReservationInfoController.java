@@ -100,8 +100,6 @@ public class ReservationInfoController {
                 log.info("session empId={}",session.getAttribute(SessionConst.EMPLOYEE_ID));
 
             }
-//        path = PathChange.setAccessMethod(session.getAttribute(ACCESS_METHOD).toString(),path);
-
             return path;
         }
 
