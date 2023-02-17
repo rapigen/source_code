@@ -31,7 +31,7 @@
                                 </div>
                                 <div id="AllContents">
                                     <div id="renewDateArea" title="새로고침은 F5">
-                                        <span th:text="|조회시각 : ${renewDate} |"></span>
+                                        <span th:text="|현재 : ${renewDate} |"></span>
                                     </div>
                                     <div id="sortTab">
                                         <div>
@@ -77,14 +77,21 @@
                                                     <div th:if="${reservations.size()>0}">
                                                         <tbody>
                                                         <tr th:each="reservation,i : ${reservations}">
-                                                            <td class = "name"  th:text="${reservation.company==null || reservation.company==''}? ${reservation.name} : ${reservation.name}+' ('+ ${reservation.company}+')'" ></td>
+                                                            <td class = "name"  th:text="${reservation.company==null || reservation.company==''}? ${reservation.name} : ${reservation.name}+'('+ ${reservation.company}+')'" ></td>
                                                             <td class = "employee_name" th:text="${reservation.employee_name}"></td>
                                                             <!--                                                        <td class = "company" th:text="${reservation.company}"></td>-->
                                                             <td class = "purpose" th:text="${reservation.purpose}"></td>
                                                             <td class = "visit_Date1" th:text="${reservation.visit_Date1}"></td>
-                                                            <td class = "phone_number" th:text="${reservation.phone_number}"></td>
-                                                            <td><input type="checkbox" name = "ckval" th:checked = "${reservation.is_checked}" th:id ="${reservation.id}"
-                                                                       th:ckval="${reservation.id}"  th:onclick="setCheck(this.getAttribute('ckval'));" checked disabled></td>
+                                                            <td class = "phone_number" th:text="${reservation.phone_number}" style="font-size:6px;"></td>
+                                                            <td>
+                                                                <span th:if="${reservation.is_checked==true}">
+                                                                    <button class="btn btn-primary" id="visitO"
+                                                                            style="font-size:10px; background-color: #dc3545; border:none; border-radius:3px">방문 O</button>
+                                                                 </span>
+                                                                <span th:if="${reservation.is_checked==false}">
+                                                                    <button class="btn btn-primary" id="visitX" style="font-size:10px; background-color: #a9a9a9; border:none; border-radius:3px">방문 X</button>
+                                                                </span>
+                                                            </td>
                                                             <td><a th:href="@{/m/reservation/info/{id} (id=${reservation.id})}" role="button" class = "detailView">보기</a></td>
                                                         </tr>
                                                         </tbody>
