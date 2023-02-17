@@ -10,7 +10,11 @@
  * Copyright 2011-2021 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
-
+div#renewDateArea{
+    font-size:60%;
+    float: right;
+  margin-right:2%;
+}
 
 footer{
   height:40%;
