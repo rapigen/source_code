@@ -71,7 +71,13 @@
                                                 <ol> 동행자 :  <span th:text="${visitor.withPerson==null || visitor.withPerson=='' }? '없음' : ${visitor.withPerson}"></span></ol>
                                                 <ol> 연락처 :  <span th:text="${visitor.phone_number}"></span></ol>
                                                 <ol> 방문여부 :
-                                                    <span th:text="${visitor.is_checked==true}? '방문 O ( 방문시각 : '+${visitor.checked_date.toString()}+', 방문스티커O )' : '방문 X'"></span>
+                                                    <span th:if="${visitor.is_checked==true}">
+                                                        <span th:text="'방문 O ( 방문시각 : '+${visitor.checked_date.toString()} + ')'"></span>
+                                                        <ol id = "stickerO">방문스티커 부착 : <input type="checkbox" id="checkVal" th:checked = "true" disabled/></ol>
+                                                    </span>
+                                                    <span th:if="${visitor.is_checked==false}">
+                                                           <span>방문 X</span>
+                                                     </span>
                                                 </ol>
                                                 <!--
                                                                                       <span id="reservationId" th:value="${reservationId}"></span>-->
