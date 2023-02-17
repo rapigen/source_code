@@ -65,7 +65,6 @@ public class HomeController {
     public String viewAll(Model model,@ModelAttribute("reservationDTO")ReservationDTO reservationDTO,HttpSession session) {
         List<Reservation> reservations = null;
         String url = "view/All1";
-//        model.addAttribute("renewDate",LocalDateTime.now().format(DateTimeFormatter.ofPattern("yy/MM/dd hh:mm:ss")));
         session.removeAttribute(SessionConst.LOGIN_SUCCESS);
         if(session.getAttribute(SessionConst.ACCESS_ID).toString().contains("security")){
             url = "view/All2";
