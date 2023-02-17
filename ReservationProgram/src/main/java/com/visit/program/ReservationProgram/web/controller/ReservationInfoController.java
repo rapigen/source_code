@@ -98,7 +98,6 @@ public class ReservationInfoController {
                 session.setAttribute(SessionConst.EMPLOYEE_ID,employee.getId());
                 reservationService.saveInfo(new SaveReservationInfo(visitor1.getId(), employee.getId(), visitor1.getIs_checked()));
                 log.info("session empId={}",session.getAttribute(SessionConst.EMPLOYEE_ID));
-
             }
             return path;
         }

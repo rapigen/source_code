@@ -9,6 +9,10 @@
   margin-left:4.5%;
 }
 
+#btnArea{
+margin-left:40%;
+}
+
 img{
   margin-top:-10px;
   margin-left:24px;
@@ -27,7 +31,7 @@ ol{
 }
 .card-body #contents{
   margin-top:10px;
-   margin-left:37%;
+   margin-left:10%;
   margin-bottom:10px;
 }
   th, td {

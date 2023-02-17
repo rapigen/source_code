@@ -55,6 +55,13 @@ form.form-inline{
 button.btn.btn-primary.mb-2{
     font-size:50%;
 }
+
+
+button#visitO.btn.btn-primary,button#visitX.btn.btn-primary{
+  padding:7%;
+  padding-left:10%;
+  padding-right:10%;
+}
 button.btn.btn-primary.btn-block{
         font-size:70%;
 }
