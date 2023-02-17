@@ -30,7 +30,9 @@
                                     <span>
                                        방문 예약 (직원용)
                                     </span>
+
                                 </h3>
+
                                 </div>
                                 <div id="AllContents">
                                 <span id="renewDateArea" title="새로고침은 F5">
@@ -39,13 +41,15 @@
                                     <div id="sortTab">
                                         <div>
                                             <form th:object="${reservationDTO}" class="form-inline" name="sendfrm" >
+
                                             <span class="form-group mb-2" id="sortId">
                                                 <span id = "DTO1">
-                                                <input type="text" id="name" th:field="*{name}" placeholder="방문자 이름 입력"/>
+                                              <input type="text" id="name" th:field="*{name}" placeholder="방문자 이름 입력"/>
+
                                                     <input type="date" id="date1" th:field="*{date1}"/> ~
                                                     <input type="date" id="date2" th:field="*{date2}"/>
                                                 </span>
-                                                <span id = "DTO2">
+                                                <span  id = "DTO2">
                                                      <span id = "DTO2Text" th:text = "방문완료"></span>
                                                      <span class="form-group mx-sm-1 mb-2" id="sortGrade">
                                                         <input type="checkbox" id = "is_checked" th:field="*{is_checked}"/>
@@ -92,15 +96,14 @@
                                                             <td class = "visit_Date2" th:text="${reservation.visit_Date2}"></td>
                                                             <td class = "phone_number" th:text="${reservation.phone_number}"></td>
                                                             <td>
-                                                        <span th:if="${reservation.is_checked==true}">
-                                                           <button class="btn btn-primary btn-block" id="visitO">방문 O</button>
-                                                        </span>
-                                                                <span th:if="${reservation.is_checked==false}">
-                                                           <button class="btn btn-primary btn-block" id="visitX">방문 X</button>
-                                                        </span>
+                                                            <span th:if="${reservation.is_checked==true}">
+                                                            <button class="btn btn-primary btn-block" id="visitO">방문 O</button>
+                                                            </span>
+                                                            <span th:if="${reservation.is_checked==false}">
+                                                           <button class="btn btn-primary btn-block" id="visitX" style="background-color: #a9a9a9; border:none; border-radius:3px">방문 X</button>
+                                                            </span>
                                                             </td>
                                                             <td><a th:href="@{/reservation/info/{id} (id=${reservation.id})}" role="button" class = "detailView">상세보기</a></td>
-
                                                         </tr>
                                                         </tbody>
                                                 </table>
@@ -110,7 +113,11 @@
                                             </div>
                                             <div id="btnArea">
                                                 <br>
-                                                <a th:href="@{/reservation/info/all}"> <button class="btn btn-primary btn-block"> 목록으로 </button></a>
+                                                <a th:href="@{/reservation/info/save}"> <button class="btn btn-primary btn-block"> 신규등록 </button></a>
+
+                                                <span th:if="${session.EMPLOYEE_ID!=null}">
+                                                <a th:href="@{/reservation/info/{employee_id}/all (employee_id=${session.EMPLOYEE_ID.toString()})}"> <button class="btn btn-primary btn-block"> 내 방문객 보기 </button></a>
+                                            </span>
                                             </div>
 
 
