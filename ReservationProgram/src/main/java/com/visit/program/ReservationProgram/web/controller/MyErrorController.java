@@ -44,11 +44,6 @@ public class MyErrorController implements ErrorController {
     public void ReviseCountExcess(HttpServletRequest request, HttpServletResponse response) throws IOException {
         ex(ErrorMessage.REVISE_COUNT_EXCESS,request,response);
     }
-//    @ExceptionHandler({ServletRequestBindingException.class,RuntimeException.class})
-//    public void bindEx(HttpServletRequest request,HttpServletResponse response) throws IOException {
-//        log.info("ServletRequestBindingException!!!!!!!");
-//        ex(ErrorMessage.WRONG_ACCESS,request,response);
-//    }
 
 
 }

@@ -22,14 +22,17 @@ public class EmployeeController {
 
     @GetMapping("/update/{id}")
     public String pwUpdate(@PathVariable("id")Long id, @ModelAttribute("employee") UpdateEmployeeDTO employee){
+        setEmployee(id,employee);
+        return "view/UpdatePassword";
+    }
+
+    private void setEmployee(Long id,UpdateEmployeeDTO employee){
         Employee employeeInfo = employeeService.findById(id);
         employee.setId(employeeInfo.getId());
         employee.setBeforePassword(employeeInfo.getPassword());
         employee.setEmployee_name(employeeInfo.getEmployee_name());
         employee.setLoginId(employeeInfo.getLoginId());
-        return "view/UpdatePassword";
     }
-
     @PostMapping("/update/{employeeId}")
     public String pwUpdate2( @PathVariable("employeeId")Long id,@Valid @ModelAttribute("employee")UpdateEmployeeDTO employee, BindingResult bindingResult){
         updateCheck(employee,bindingResult);

@@ -14,7 +14,6 @@ public abstract class PathChange {
             }
             sb.append(uri);
         }
-        log.info("path={}",sb.toString());
         return sb.toString();
     }
 

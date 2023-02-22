@@ -33,30 +33,28 @@ public class HomeController {
     @GetMapping("/reservation/info/all/rapigen_employee")
     public String viewEmployees(HttpSession session) {
         String uri = "redirect:/reservation/info/save";
+        AccessIdNull(session, UUID.randomUUID().toString());
+        return uri;
+    }
+
+    private void AccessIdNull(HttpSession session,String uuid){
         if(session.getAttribute(SessionConst.ACCESS_ID)==null){
-            String uuid = UUID.randomUUID().toString();
             session.setAttribute(SessionConst.ACCESS_ID, uuid);
         }
-        return uri;
     }
 
 
     @GetMapping("/reservation/info/all/rapigen_security")
     public String viewSecurity(@ModelAttribute("reservationDTO")ReservationDTO reservationDTO,HttpSession session,Model model) {
-      String url =   "redirect:/reservation/info/all";
+        String url =   "redirect:/reservation/info/all";
         List<Reservation> reservations = reservationService.findAllDTO(reservationDTO);
-        if(session.getAttribute(SessionConst.ACCESS_ID)==null){
-            String uuId = UUID.randomUUID().toString()+"security";
-            session.setAttribute(SessionConst.ACCESS_ID,uuId);
-        }
+        AccessIdNull(session,UUID.randomUUID().toString()+"security");
         model.addAttribute("reservations",reservations);
         return url;
     }
 
     @GetMapping("/reservation")
-    public String redirectReservation(RedirectAttributes redirectAttributes){
-//        String renewDate = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yy/MM/dd hh:mm:ss"));
-//        redirectAttributes.addAttribute("renewDate",renewDate);
+    public String redirectReservation(){
         return "redirect:/reservation/info/all";
     }
 
