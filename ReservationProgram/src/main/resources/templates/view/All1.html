@@ -36,7 +36,7 @@
                                 </div>
                              <div id="AllContents">
                                 <span id="renewDateArea" title="새로고침은 F5">
-                                    <span th:text="|조회시각 : ${renewDate} |"></span>
+                                    <span th:text="|현재 : ${renewDate} |"></span>
                                 </span>
                                 <div id="sortTab">
                                     <div>
@@ -97,10 +97,10 @@
                                                         <td class = "phone_number" th:text="${reservation.phone_number}"></td>
                                                         <td>
                                                             <span th:if="${reservation.is_checked==true}">
-                                                            <button class="btn btn-primary btn-block" id="visitO">방문 O</button>
+                                                            <button class="btn btn-primary btn-block" id="visitO">방문O</button>
                                                             </span>
                                                             <span th:if="${reservation.is_checked==false}">
-                                                           <button class="btn btn-primary btn-block" id="visitX" style="background-color: #a9a9a9; border:none; border-radius:3px">방문 X</button>
+                                                           <button class="btn btn-primary btn-block" id="visitX" style="background-color: #a9a9a9; border:none; border-radius:3px">방문X</button>
                                                             </span>
                                                         </td>
                                                         <td><a th:href="@{/reservation/info/{id} (id=${reservation.id})}" role="button" class = "detailView">상세보기</a></td>

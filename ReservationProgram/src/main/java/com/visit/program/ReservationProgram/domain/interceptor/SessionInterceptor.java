@@ -13,7 +13,7 @@ import javax.servlet.http.HttpSession;
  *  - 직원용 : reservation/info/all/rapigen_employee   -> 저장 화면으로 리다이랙트
  *  - 경비실 : reservation/info/all/rapigen_security   -> 전체 조회 화면으로 리다이랙트
  *  세션값(key : ACCESS_ID) 생셩
- *  만약 세션값이 없거나 정해진 PATH로 접속되지 않으면 "/"로 리다이랙트
+ *  만약 세션값이 없거나 정해진 PATH로 접속되지 않으면 "index.html"로 리다이랙트
  * */
 @Slf4j
 public class SessionInterceptor implements HandlerInterceptor {

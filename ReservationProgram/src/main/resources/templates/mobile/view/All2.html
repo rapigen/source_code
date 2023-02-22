@@ -51,7 +51,7 @@
                                 </div>
                                 <div id="AllContents">
                                 <div id="renewDateArea" title="새로고침은 F5">
-                                    <span th:text="|조회시각 : ${renewDate} |"></span>
+                                    <span th:text="|현재 : ${renewDate} |"></span>
                                 </div>
 
                                 <div id="sortTab">
@@ -98,7 +98,7 @@
                                                 <div th:if="${reservations.size()>0}">
                                                     <tbody>
                                                     <tr th:each="reservation,i : ${reservations}">
-                                                        <td class = "name"  th:text="${reservation.company==null || reservation.company==''}? ${reservation.name} : ${reservation.name}+' ('+ ${reservation.company}+')'" ></td>
+                                                        <td class = "name"  th:text="${reservation.company==null || reservation.company==''}? ${reservation.name} : ${reservation.name}+'('+ ${reservation.company}+')'" ></td>
                                                         <td class = "employee_name" th:text="${reservation.employee_name}"></td>
                                                         <!--                                                        <td class = "company" th:text="${reservation.company}"></td>-->
                                                         <td class = "purpose" th:text="${reservation.purpose}"></td>

@@ -16,7 +16,8 @@
 
 
     <select id = "findMyVisitors" resultType="com.visit.program.ReservationProgram.domain.dao.Reservation">
-        select r.id,if(CHAR_LENGTH(v.purpose) <![CDATA[ <= ]]>10,v.purpose,concat(left(v.purpose,10),' ...')) as purpose, v.name,v.employee_name,v.visit_date1,v.visit_date2,v.phone_number,v.withPerson, if(CHAR_LENGTH(v.company) <![CDATA[ <= ]]>10,v.company,concat(left(v.company,10),' ...')) as company,v.is_checked from Reservation_info r inner join visitor v on r.visitor_id = v.id
+        select r.id,if(CHAR_LENGTH(v.purpose) <![CDATA[ <= ]]>8,v.purpose,concat(left(v.purpose,5),'..')) as purpose, v.name,v.employee_name,v.visit_date1,v.visit_date2,v.phone_number,v.withPerson,
+        if(CHAR_LENGTH(v.company) <![CDATA[ <= ]]>8,v.company,concat(left(v.company,5),'..')) as company,v.is_checked from Reservation_info r inner join visitor v on r.visitor_id = v.id
 
         <where>
             <if test="employee_id!=null and employee_id!=''">
@@ -73,8 +74,8 @@
 <!--    </select>-->
 
     <select id = "findAllDTO" resultType="com.visit.program.ReservationProgram.domain.dao.Reservation">
-        select r.id,if(CHAR_LENGTH(v.purpose) <![CDATA[ <= ]]>10,v.purpose,concat(left(v.purpose,10),' ...')) as purpose, v.name,v.employee_name,v.visit_date1,v.visit_date2,v.phone_number,v.withPerson, if(CHAR_LENGTH(v.company) <![CDATA[ <= ]]>10,v.company,concat(left(v.company,10),' ...')) as company,v.is_checked from Reservation_info r inner join visitor v on r.visitor_id = v.id
-
+        select r.id,if(CHAR_LENGTH(v.purpose) <![CDATA[ <= ]]>8,v.purpose,concat(left(v.purpose,5),'..')) as purpose, v.name,v.employee_name,v.visit_date1,v.visit_date2,v.phone_number,v.withPerson,
+        if(CHAR_LENGTH(v.company) <![CDATA[ <= ]]>5,v.company,concat(left(v.company,3),'..')) as company,v.is_checked from Reservation_info r inner join visitor v on r.visitor_id = v.id
         <where>
             <if test="name!=null and name!=''">
                 and v.name like concat('%',#{name},'%')
@@ -98,8 +99,8 @@
 
 
     <select id = "findAllDTO2" resultType="com.visit.program.ReservationProgram.domain.dao.Reservation">
-        select r.id,if(CHAR_LENGTH(v.purpose) <![CDATA[ <= ]]>10,v.purpose,concat(left(v.purpose,10),' ...')) as purpose, v.name,v.employee_name,v.visit_date1,v.visit_date2,v.phone_number,v.withPerson, if(CHAR_LENGTH(v.company) <![CDATA[ <= ]]>10,v.company,concat(left(v.company,10),' ...')) as company,v.is_checked from Reservation_info r inner join visitor v on r.visitor_id = v.id
-
+        select r.id,if(CHAR_LENGTH(v.purpose) <![CDATA[ <= ]]>8,v.purpose,concat(left(v.purpose,5),'..')) as purpose, v.name,v.employee_name,v.visit_date1,v.visit_date2,v.phone_number,v.withPerson,
+        if(CHAR_LENGTH(v.company) <![CDATA[ <= ]]>5,v.company,concat(left(v.company,3),'..')) as company,v.is_checked from Reservation_info r inner join visitor v on r.visitor_id = v.id
         <where>
             <if test="name!=null and name!=''">
                 and v.name like concat('%',#{name},'%')

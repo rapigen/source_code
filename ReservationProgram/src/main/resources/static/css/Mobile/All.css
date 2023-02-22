@@ -38,10 +38,8 @@ thead, tbody{
   width:fit-content;
 }
 
-div#renewDateArea{
-    font-size:60%;
-    float: right;
-}
+
+
 .mb-2 #date1,.mb-2 #date2{
   width:25%;
 }
@@ -53,14 +51,16 @@ form.form-inline{
     text-align:center;
 }
 button.btn.btn-primary.mb-2{
-    font-size:50%;
+    font-size:70%;
 }
 
 
 button#visitO.btn.btn-primary,button#visitX.btn.btn-primary{
-  padding:7%;
-  padding-left:10%;
-  padding-right:10%;
+  padding-top:2%;
+  padding-left:3%;
+  padding-right:3%;
+  padding-bottom:2%;
+
 }
 button.btn.btn-primary.btn-block{
         font-size:70%;

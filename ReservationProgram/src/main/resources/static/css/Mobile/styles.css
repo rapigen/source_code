@@ -10,7 +10,11 @@
  * Copyright 2011-2021 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
-
+div#renewDateArea{
+    font-size:60%;
+    float: right;
+  margin-right:2%;
+}
 
 footer{
   height:40%;
@@ -2719,9 +2723,11 @@ textarea.form-control-lg {
   padding-top: 1.625rem;
   padding-bottom: 0.625rem;
 }
+/**
 .form-floating > .form-control:focus, .form-floating > .dataTable-input:focus, .form-floating > .form-control:not(:placeholder-shown), .form-floating > .dataTable-input:not(:placeholder-shown) {
   padding-left:1.125rem;
 }
+*/
 .form-floating > .form-control:-webkit-autofill, .form-floating > .dataTable-input:-webkit-autofill {
   padding-top: 1.625rem;
   padding-bottom: 0.625rem;

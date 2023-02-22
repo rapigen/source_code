@@ -1,29 +1,20 @@
 package com.visit.program.ReservationProgram.web.controller;
 
-import com.visit.program.ReservationProgram.domain.dao.Employee;
 import com.visit.program.ReservationProgram.domain.dao.Reservation;
 import com.visit.program.ReservationProgram.domain.dao.session.SessionConst;
 import com.visit.program.ReservationProgram.domain.dto.Login;
-import com.visit.program.ReservationProgram.domain.service.EmployeeService;
 import com.visit.program.ReservationProgram.domain.service.LoginService;
 import com.visit.program.ReservationProgram.domain.service.ReservationService;
 import com.visit.program.ReservationProgram.web.controller.path.AbstractPath;
-import com.visit.program.ReservationProgram.web.controller.path.PathChange;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
-import java.io.IOException;
-import java.io.PrintWriter;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.UUID;
@@ -54,8 +45,7 @@ public class LoginController {
     @PostMapping("/login/{reservationId}")
     public String login2(@PathVariable("reservationId")Long reservationId,@Valid @ModelAttribute("login")Login login,BindingResult bindingResult, HttpSession session, Model model){
         Reservation res = reservationService.findOne(reservationId);
-        Long employeeId = findEmployeeId(res.getVisitor_id(),login,bindingResult);
-
+        findEmployeeId(res.getVisitor_id(),login,bindingResult);
         if(bindingResult.hasErrors()){
             model.addAttribute("errorMsg","아이디 or 비밀번호가 틀렸습니다.");
             return "view/Login";
@@ -70,13 +60,11 @@ public class LoginController {
 
 
 
-    private Long findEmployeeId(Long id, Login login, BindingResult bindingResult){
+    private void findEmployeeId(Long id, Login login, BindingResult bindingResult){
         Long employeeId = loginService.loginMember(login,id);
-
         if(employeeId==null){
             bindingResult.reject("globalError","아이디 / 비밀번호가 틀렸습니다.");
         }
-        return employeeId;
     }
 
 

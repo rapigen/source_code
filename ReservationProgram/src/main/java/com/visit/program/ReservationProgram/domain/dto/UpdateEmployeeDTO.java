@@ -8,7 +8,7 @@ import lombok.Setter;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 /**
- * 직원정보 수정
+ * 직원정보 수정 DTO 클래스
  * */
 @Getter
 @Setter
@@ -22,10 +22,10 @@ public class UpdateEmployeeDTO {
     @NotEmpty
     private String employee_name;
     @NotEmpty
-    private String beforePassword;
+    private String beforePassword;  //기존 비밀번호
 
     @NotEmpty
-    private String password;
+    private String password;    //바꾸려는 비밀번호
     @NotEmpty
-    private String passwordCheck;
+    private String passwordCheck;   //비밀번호(확인용) -> password와 일치해야함
 }

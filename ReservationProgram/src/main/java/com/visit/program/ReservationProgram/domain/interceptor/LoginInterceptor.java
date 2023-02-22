@@ -16,7 +16,7 @@ import java.net.URLConnection;
 import java.util.Arrays;
 /**
  * 로그인 인터셉터
- * 로그인 성공하면 로그인 관련 세션 (key : SessionConst.LOGIN_SUCCESS) 생성 -> 이 세션이 있어야 게시글의 수정, 삭제 가능하도록 설계함
+ * 로그인 성공하면 로그인 관련 세션 (key : SessionConst.LOGIN_SUCCESS) 생성 -> 이 세션이 있어야 게시글의 수정, 삭제 가능
  * */
 @Slf4j
 public class LoginInterceptor implements HandlerInterceptor {

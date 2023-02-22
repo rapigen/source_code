@@ -1,6 +1,6 @@
 package com.visit.program.ReservationProgram.domain.ex;
 /**
- * 수정사항이 없으면 예외 발생
+ * 수정사항이 없으면 예외 발생 ( 수정내용 반영 x)
  * */
 public class NoModificationsEx extends RuntimeException {
     private String message;
